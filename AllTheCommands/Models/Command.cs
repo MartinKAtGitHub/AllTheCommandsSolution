@@ -9,8 +9,10 @@ namespace AllTheCommands.Models
     {
         public int Id { get; set; }
         public string HowTo { get; set; }
+       /// <summary>
+       /// Holds the syntax for the command 
+       /// </summary>
         public string Line { get; set; }
         public string Platform { get; set; }
-
     }
 }
