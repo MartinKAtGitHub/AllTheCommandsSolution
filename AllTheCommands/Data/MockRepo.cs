@@ -8,6 +8,16 @@ namespace AllTheCommands.Data
 {
     public class MockRepo : IRepo
     {
+        public void CreateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+
         public Command GetCommandById(int id)
         {
             return new Command { Id = 0, HowTo = "Check Test", Line = "Test", Platform = "Linux" };
@@ -22,6 +32,16 @@ namespace AllTheCommands.Data
                 new Command {Id = 2, HowTo = "Boil an egg", Line = "boil water", Platform = "Pot" }
             };
 
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
 
 namespace AllTheCommands
 {
@@ -31,11 +32,15 @@ namespace AllTheCommands
                 options.UseSqlServer(connectionString: Configuration.GetConnectionString("LocalConnection")));
 
 
-            services.AddControllers();
-
+            services.AddControllers().AddNewtonsoftJson(s => {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            
+            });
+            
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IRepo, SQLRepo>();
+            
 
         }
 
@@ -46,7 +51,7 @@ namespace AllTheCommands
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseRouting();
 

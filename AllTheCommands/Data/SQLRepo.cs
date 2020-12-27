@@ -23,5 +23,33 @@ namespace AllTheCommands.Data
         {
             return _dbContext.Commands.FirstOrDefault(command => command.Id == id);
         }
+
+        public bool SaveChanges()
+        {
+            return _dbContext.SaveChanges() >= 0;
+        }
+
+        public void CreateCommand(Command cmd)
+        {
+            if(cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _dbContext.Commands.Add(cmd);
+        }
+
+        public void UpdateCommand(Command cmd)
+        {
+            // Nothing
+        }
+
+        public void DeleteCommand(Command cmd)
+        {
+            if (cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _dbContext.Commands.Remove(cmd);
+        }
     }
 }
